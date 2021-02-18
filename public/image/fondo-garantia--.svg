@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1283.94 289.49">
+    <defs>
+        <style>
+            .cls-1 {
+                fill: #f6f6f6;
+            }
+            .cls-2 {
+                font-size: 82.66px;
+                fill: none;
+                stroke: #e4417c;
+                stroke-miterlimit: 10;
+                font-family: Ubuntu-Bold, Ubuntu Bold;
+                font-weight: 700;
+            }
+            .cls-3 {
+                letter-spacing: 0em;
+            }
+            .cls-4 {
+                letter-spacing: 0em;
+            }
+            .cls-5 {
+                letter-spacing: -0.01em;
+            }
+            .cls-6 {
+                letter-spacing: 0em;
+            }
+        </style>
+    </defs>
+    <title>fondo-garantia</title>
+    <g id="Capa_2" data-name="Capa 2">
+        <g id="Capa_1-2" data-name="Capa 1">
+            <rect class="cls-1" width="1283.94" height="289.49" />
+            <text class="cls-2" transform="translate(226.3 140.11)">
+                Sin sorpresas!
+            </text>
+        </g>
+    </g>
+</svg>
