@@ -41,7 +41,7 @@
                             <span class="input-group-text lupa-border-span"><i class="fas fa-search"></i></span>
                         </div>
                         <div id="search-desplegable" class="d-none">
-
+                          
                         </div>
                     </div>
                 </li>

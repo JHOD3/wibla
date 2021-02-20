@@ -173,6 +173,7 @@ class PageController extends Controller
             ->where('products.slug',$slug)
             ->select('products.*','marks.name as marca','categories.name as categoria')
             ->first();
+        
         return view('web.product_detail_b',compact('product'));
     }
 

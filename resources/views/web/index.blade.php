@@ -93,7 +93,7 @@
             </div>
         </div>
     </section>
-    <section class="pt-md-5 bg-section-home">
+    <section class="pt-md-5 bg-section-home-2">
         <h2 class="text-center font49-px text-secondary position-absolute center-image-absolute mt-text-garantia font-weight-bold">Garantías 100% oficiales!</h2>
         <embed class="mx-auto d-md-block d-none container" src="image/fondo-garantia.svg" type="" style="width: 100%;"/>
         <embed class="mx-auto d-block d-md-none" src="image/fondo-garantia-m.svg" type="" style="width: 100%;"/>

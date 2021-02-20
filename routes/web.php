@@ -23,16 +23,7 @@ Route::get('/cache', function () {
     Artisan::call('config:cache');
     return 'Exito';
 });
-/*Route::get('/prueba', function (){
-    $destinationPath = 'uploads/';
-    $products = \Illuminate\Support\Facades\DB::table('products')->get();
 
-   foreach ($products as $product){
-       Image::make($destinationPath.$product->primary_image)->resize(250,250)->save('uploads/thumbnail/250px/'.$product->primary_image,72);
-       Image::make($destinationPath.$product->primary_image)->resize(300,300)->save('uploads/thumbnail/300px/'.$product->primary_image,72);
-   }
-    dd('Todo listo');
-});*/
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'PageController@index');
     Route::get('governmental','PageController@organismsGovernmental')->name('governmental');

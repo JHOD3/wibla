@@ -16354,5 +16354,14 @@ input[type=range].no-border {
 }
 
 .bg-section-home {
-  background: #F6F6F6;
+  background: #efeff1;
+}
+.bg-section-home-2 {
+  background: #f6f6f6;
+}
+.owl-carousel .owl-item img {
+  display: block;
+  width: 900px;
+  height: 500px;
+  margin: auto;
 }

@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <title>{{ config('app.name') }}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-
+    <link rel="apple-touch-icon" sizes="57x57" href="{{asset('favicoin/apple-touch-icon.png')}}">
+    <link rel="shortcut icon" sizes="16x16 32x32" href="{{asset('favicoin/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" href="{{asset('favicoin/android-chrome-192x192.png')}}" sizes=192x192>
+    <link rel="icon" type="image/png" href="{{asset('favicoin/android-chrome-512x512.png')}}" sizes=512x512>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
           integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
           crossorigin="anonymous"/>

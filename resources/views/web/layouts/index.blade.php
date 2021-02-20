@@ -5,6 +5,10 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{asset('favicoin/apple-touch-icon.png')}}">
+    <link rel="shortcut icon" sizes="16x16 32x32" href="{{asset('favicoin/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" href="{{asset('favicoin/android-chrome-192x192.png')}}" sizes=192x192>
+    <link rel="icon" type="image/png" href="{{asset('favicoin/android-chrome-512x512.png')}}" sizes=512x512>
     <title>Wibla</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.0.10/css/all.css"/>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
@@ -49,6 +53,7 @@
             }
         });
     });
+
 </script>
 </body>
 </html>
