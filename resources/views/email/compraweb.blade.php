@@ -264,7 +264,7 @@
                         </tr>
                       </table>
 
-                      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
+                      <!-- <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
                         <tr>
                           <td style="padding:4px;">
                             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:30;">
@@ -278,7 +278,7 @@
                             </table>
                           </td>
                         </tr>
-                      </table>
+                      </table> -->
 
                       <!-- <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
                         <tr>
