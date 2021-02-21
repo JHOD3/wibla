@@ -6,6 +6,8 @@ use App\Repositories\ProductRepository;
 use Cassandra\Rows;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Mail\MessageContract;
+use Illuminate\Support\Facades\Mail;
 
 class PageController extends Controller
 {
@@ -53,9 +55,9 @@ class PageController extends Controller
         return view('web.business');
     }
 
-    public function contact()
-    {
-        return view('web.contact');
+    public function contact($product = '')
+    {   
+        return view('web.contact', compact('product'));
     }
 
     public function faqs()
@@ -186,5 +188,21 @@ class PageController extends Controller
                             ->get();
         }
         return response()->json($product, 200, ['Content-Type'=>'application/json'], JSON_UNESCAPED_UNICODE);
+    }
+
+    public function sendContact(Request $request)
+    {   
+        $request->validate([
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
+        
+        $data = $request->all();
+        Mail::to('jsdlcs266@gmail.com')->send(new MessageContract($data));
+        return redirect('thanks');
+    }
+
+    public function thanks(Type $var = null)
+    {
+        return view('web.contact_thanks');
     }
 }

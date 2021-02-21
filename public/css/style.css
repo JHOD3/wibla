@@ -517,7 +517,14 @@ ul.content-caja-li li {
   margin: 3px 5px;
   display: inline-table;
 }
+.captcha_movil{
+  justify-content: center;
+  display: flex;
+}
 @media screen and (max-width: 768px) {
+  .captcha_movil{
+    transform: scale(.7);
+  }
   .content-product {
     width: 100%;
     padding: 1rem 0;

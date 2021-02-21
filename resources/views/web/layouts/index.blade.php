@@ -29,6 +29,7 @@
     @yield('content')
 </main>
 @include('web.layouts.footer')
+{!! NoCaptcha::renderJs() !!}
 @yield('script')
 <script>
 

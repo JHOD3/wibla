@@ -18,7 +18,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/home') }}"><b><img src="{{asset('image/logo_wibla_header.svg')}}" alt=""></b></a>
+        <a href="{{ url('/') }}"><b><img src="{{asset('image/logo_wibla_header.svg')}}" alt=""></b></a>
     </div>
     <!-- /.login-logo -->
 
@@ -59,25 +59,32 @@
                     @enderror
 
                 </div>
-
-                <div class="row">
-                    <div class="col-7">
+                <div class="captcha_movil">
+                    {!! NoCaptcha::display(['data-theme' => 'dark','data-callback'=>'captchaCheckContact']) !!}
+                    @error('g-recaptcha-response')
+                        <span class="invalid-feedback d-block justify-content-center">
+                            <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="row mt-md-4">
+                    <div class="col-md-7 col-12">
                         <div class="icheck-primary">
                             <input type="checkbox" id="remember">
                             <label for="remember">Recordar</label>
                         </div>
                     </div>
 
-                    <div class="col-5">
+                    <div class="col-md-5 col-12">
                         <button type="submit" class="btn btn-primary btn-block">Inicio session</button>
                     </div>
 
                 </div>
             </form>
 
-            <p class="mb-1">
+            <!-- <p class="mb-1">
                 <a href="{{ route('password.request') }}">¿Olvido su contraseña?</a>
-            </p>
+            </p> -->
 {{--            <p class="mb-0">--}}
 {{--                <a href="{{ route('register') }}" class="text-center">Register a new membership</a>--}}
 {{--            </p>--}}
@@ -89,6 +96,6 @@
 <!-- /.login-box -->
 
 <script src="{{ asset('js/app.js') }}" defer></script>
-
+{!! NoCaptcha::renderJs() !!}
 </body>
 </html>

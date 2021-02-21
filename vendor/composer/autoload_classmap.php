@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Anhskohbo\\NoCaptcha\\Facades\\NoCaptcha' => $vendorDir . '/anhskohbo/no-captcha/src/Facades/NoCaptcha.php',
+    'Anhskohbo\\NoCaptcha\\NoCaptcha' => $vendorDir . '/anhskohbo/no-captcha/src/NoCaptcha.php',
+    'Anhskohbo\\NoCaptcha\\NoCaptchaServiceProvider' => $vendorDir . '/anhskohbo/no-captcha/src/NoCaptchaServiceProvider.php',
     'App\\Casts\\Json' => $baseDir . '/app/Casts/Json.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -45,6 +48,7 @@ return array(
     'App\\Http\\Requests\\UpdateProductRequest' => $baseDir . '/app/Http/Requests/UpdateProductRequest.php',
     'App\\Http\\Requests\\UpdateRolesRequest' => $baseDir . '/app/Http/Requests/UpdateRolesRequest.php',
     'App\\Http\\Requests\\UpdateUserRequest' => $baseDir . '/app/Http/Requests/UpdateUserRequest.php',
+    'App\\Mail\\MessageContract' => $baseDir . '/app/Mail/MessageContract.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Mark' => $baseDir . '/app/Models/Mark.php',
     'App\\Models\\Permissions' => $baseDir . '/app/Models/Permissions.php',

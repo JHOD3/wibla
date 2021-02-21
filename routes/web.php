@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use Intervention\Image\ImageManagerStatic as Image;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,10 +25,12 @@ Route::get('/cache', function () {
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'PageController@index');
+    Route::get('/thanks', 'PageController@thanks');
     Route::get('governmental','PageController@organismsGovernmental')->name('governmental');
     Route::get('educative','PageController@organismsEducative')->name('educative');
     Route::get('business','PageController@organismsBusiness')->name('business');
-    Route::get('contact','PageController@contact')->name('contact');
+    Route::get('contact/{product?}','PageController@contact')->name('contact');
+    Route::post('sendContact','PageController@sendContact')->name('sendContact');
     Route::get('faqs','PageController@faqs')->name('faqs');
     Route::get('aboutUs','PageController@aboutUs')->name('aboutUs');
     Route::get('product_list','PageController@productList')->name('product_list');

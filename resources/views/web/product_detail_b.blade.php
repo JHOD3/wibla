@@ -23,7 +23,7 @@
           <div class="mt-md-4"><small class="font16-px">Precio</small>
             <h2 class="font43-px-d">{{$product->precio}}</h2>
           </div>
-          <botton class="btn btn-md btn-secondary col-8">Quiero comprar</botton>
+          <a href="{{route('contact',['product'=>'Quiero comprar '.$product->name.' Por favor contactarme a los datos proporcionados. Gracias.'])}}" class="btn btn-md btn-secondary col-8">Quiero comprar</a>
         </div>
       </div>
     </div>

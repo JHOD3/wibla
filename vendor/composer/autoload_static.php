@@ -21,8 +21,8 @@ class ComposerStaticInit9b6c6097588057ab7399e89d6473ba40
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
@@ -179,6 +179,7 @@ class ComposerStaticInit9b6c6097588057ab7399e89d6473ba40
         array (
             'Asm89\\Stack\\' => 12,
             'App\\' => 4,
+            'Anhskohbo\\NoCaptcha\\' => 20,
         ),
     );
 
@@ -509,6 +510,10 @@ class ComposerStaticInit9b6c6097588057ab7399e89d6473ba40
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'Anhskohbo\\NoCaptcha\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/anhskohbo/no-captcha/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -529,6 +534,9 @@ class ComposerStaticInit9b6c6097588057ab7399e89d6473ba40
     );
 
     public static $classMap = array (
+        'Anhskohbo\\NoCaptcha\\Facades\\NoCaptcha' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/Facades/NoCaptcha.php',
+        'Anhskohbo\\NoCaptcha\\NoCaptcha' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/NoCaptcha.php',
+        'Anhskohbo\\NoCaptcha\\NoCaptchaServiceProvider' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/NoCaptchaServiceProvider.php',
         'App\\Casts\\Json' => __DIR__ . '/../..' . '/app/Casts/Json.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -568,6 +576,7 @@ class ComposerStaticInit9b6c6097588057ab7399e89d6473ba40
         'App\\Http\\Requests\\UpdateProductRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateProductRequest.php',
         'App\\Http\\Requests\\UpdateRolesRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateRolesRequest.php',
         'App\\Http\\Requests\\UpdateUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateUserRequest.php',
+        'App\\Mail\\MessageContract' => __DIR__ . '/../..' . '/app/Mail/MessageContract.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Mark' => __DIR__ . '/../..' . '/app/Models/Mark.php',
         'App\\Models\\Permissions' => __DIR__ . '/../..' . '/app/Models/Permissions.php',

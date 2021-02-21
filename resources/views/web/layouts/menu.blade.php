@@ -9,13 +9,13 @@
             </div>
             <ul class="nav navbar-nav nav-flex-icons d-md-flex d-none">
                 <li class="nav-item">
-                    <a class="nav-link" href="#camaras"><span class="clearfix d-none d-sm-inline-block">Camaras</span></a>
+                    <a class="nav-link" href="{{url('/#camaras')}}"><span class="clearfix d-none d-sm-inline-block">Camaras</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#lentes"><span class="clearfix d-none d-sm-inline-block">Lentes</span></a>
+                    <a class="nav-link" href="{{url('/#lentes')}}"><span class="clearfix d-none d-sm-inline-block">Lentes</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#proyectores"><span class="clearfix d-none d-sm-inline-block">Proyectores</span></a>
+                    <a class="nav-link" href="{{url('/#proyectores')}}"><span class="clearfix d-none d-sm-inline-block">Proyectores</span></a>
                 </li>
                 <li class="nav-item dropdown notifications-nav">
                     <a class="nav-link align-items-center d-flex" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"><span class="d-none d-md-inline-block">Empresas</span><i class="fas fa-chevron-down"></i></a>
@@ -27,7 +27,7 @@
                                     <a class="dropdown-item text-left" href="{{route('governmental')}}">Organismos Gubernamentales</a>
                                     <a class="dropdown-item text-left" href="{{route('educative')}}">Organismos Educativos</a>
                                     <a class="dropdown-item text-left" href="{{route('business')}}">Organismos Empresariales</a>
-                                </div>s
+                                </div>
                             </div>
                         </div>
                     </div>

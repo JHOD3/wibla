@@ -2077,8 +2077,14 @@ pre code {
     border: 0;
   }
 }
-
+.captcha_movil{
+  justify-content: center;
+  display: flex;
+}
 @media (max-width: 767.98px) {
+  .captcha_movil{
+    transform: scale(.7);
+  }
   .table-responsive-md {
     display: block;
     width: 100%;

@@ -175,6 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        // Recapchat
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
     ],
 
     /*
@@ -230,6 +232,7 @@ return [
         'Html'         => Collective\Html\HtmlFacade::class,
         'Flash'        => Laracasts\Flash\Flash::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
     ],
 
 ];

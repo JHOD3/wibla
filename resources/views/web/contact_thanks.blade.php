@@ -76,7 +76,7 @@
             <div class="col-md-5 col-12 mt-container-home mt-md-5">
               <div class="pl-md-5">
                 <h1 class="montserrat text-md-left text-white font42-px text-center"> Contacto</h1>
-                <p class="mt-md-4 text-md-left font16-px text-white text-center">Si no encontrás tu consulta acá, podés <br> escribirnos a  <a class="text-white" href="mailto:ayuda@wibla.com">ayuda@wibla.com</a>con tu <br> pregunta, estamos para ayudarte.</p>
+                <p class="mt-md-4 text-md-left font16-px text-white text-center">Si no encontrás tu consulta acá, podés <br> escribirnos a  <a class="text-white" href="mailto:ayuda@wibla.com">ayuda@wibla.com.ar</a> con tu <br> pregunta, estamos para ayudarte.</p>
               </div>
             </div>
             <div class="col-md-7 col-12 mt-container-home pt-md-5">
