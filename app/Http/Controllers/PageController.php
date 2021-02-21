@@ -195,9 +195,9 @@ class PageController extends Controller
         $request->validate([
             'g-recaptcha-response' => 'required|captcha'
         ]);
-        
+
         $data = $request->all();
-        Mail::to('jsdlcs266@gmail.com')->send(new MessageContract($data));
+        Mail::to('compraweb@wibla.com.ar')->send(new MessageContract($data));
         return redirect('thanks');
     }
 
