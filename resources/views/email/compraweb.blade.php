@@ -148,7 +148,7 @@
                         <tbody>
                           <tr>
                             <td>
-                                <img alt="Wibla" height="auto" src="{{asset('image/logo_wibla_header.svg')}}" title="Wibla" style="border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;width: 50%; margin: auto;display: block;" />
+                                <img alt="Wibla" height="auto" src="{{asset('image/logo_wibla_header.svg')}}" title="Wibla" style="border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;width: 100%; margin: auto;display: block;" />
                             </td>
                           </tr>
                         </tbody>
