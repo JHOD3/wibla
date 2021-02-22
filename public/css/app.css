@@ -2079,7 +2079,7 @@ pre code {
 }
 .captcha_movil{
   justify-content: center;
-  display: flex;
+  display: grid;
 }
 @media (max-width: 767.98px) {
   .captcha_movil{
