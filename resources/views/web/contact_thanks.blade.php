@@ -12,7 +12,7 @@
       <div class="col-md-7 col-12 mt-container-home pt-md-5">
         <div class="card d-flex py-5 col-md-10" style="border-radius: 20px;">
           <div class="px-md-5 col-md-12">
-            <h2 class="text-primary font40-px">¡Muchas gracias <br> enviar tu consulta!</h2>
+            <h2 class="text-primary font40-px">¡Muchas gracias <br>por enviar tu consulta!</h2>
             <p class="font16-px">Nos pondremos en contacto a la brevedad para <br> responder tu dudo o reclamo.</p>
           </div>
         </div>
