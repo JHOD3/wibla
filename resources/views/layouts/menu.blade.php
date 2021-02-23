@@ -1,5 +1,5 @@
 <!-- need to remove -->
-@can('haveaccess', 'roles.index')
+{{-- @can('haveaccess', 'roles.index')
     <li class="{{ Request::is('roles*') ? 'menu-open' : '' }} nav-item has-treeview">
         <a href="#" class="nav-link">
             <i class="nav-icon fas fa-users"></i>
@@ -25,7 +25,7 @@
             </li>
         </ul>
     </li>
-@endcan
+@endcan --}}
 
 {{-- @can('haveaccess', 'permissions.index')
     <li class="{{ Request::is('permissions*') ? 'menu-open' : '' }} nav-item has-treeview">
