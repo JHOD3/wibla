@@ -27,16 +27,19 @@ class PageController extends Controller
                         ->makeModel()::join('categories','products.category_id','categories.id')
                         ->where('categories.id','1')
                         ->select('products.*','categories.name as categoria')
+                        ->limit(10)
                         ->get();
         $lentes  = $this->productRepository
                         ->makeModel()::join('categories','products.category_id','categories.id')
                         ->where('categories.id','2')
                         ->select('products.*','categories.name as categoria')
+                        ->limit(10)
                         ->get();
         $proyectores = $this->productRepository
                             ->makeModel()::join('categories','products.category_id','categories.id')
                             ->where('categories.id','3')
                             ->select('products.*','categories.name as categoria')
+                            ->limit(10)
                             ->get();
 
         return view('web.index',compact('camaras','lentes','proyectores'));
