@@ -17,13 +17,13 @@
     </div>
     <div class="owl-carousel owl-home d-none d-md-block">
       <embed class="mx-auto d-block" src="image/header_product.png" style="width:100%"/>
-      <embed class="mx-auto d-block" src="image/header_product.png" style="width:100%"/>
-      <embed class="mx-auto d-block" src="image/header_product.png" style="width:100%"/>
+      {{-- <embed class="mx-auto d-block" src="image/header_product.png" style="width:100%"/>
+      <embed class="mx-auto d-block" src="image/header_product.png" style="width:100%"/> --}}
     </div>
     <div class="owl-carousel owl-home d-block d-md-none">
       <embed class="mx-auto d-block" src="image/header_product-m.png" style="width:100%"/>
-      <embed class="mx-auto d-block" src="image/header_product-m.png" style="width:100%"/>
-      <embed class="mx-auto d-block" src="image/header_product-m.png" style="width:100%"/>
+      {{-- <embed class="mx-auto d-block" src="image/header_product-m.png" style="width:100%"/>
+      <embed class="mx-auto d-block" src="image/header_product-m.png" style="width:100%"/> --}}
     </div>
   </section>
   <section class="pt-md-5 py-5 pb-md-0" style="background: #F6F6F6;">
@@ -154,7 +154,7 @@
       </div>
       <div class="col-md-9 mx-auto d-block">
         @foreach($products as $product )
-          <div class="card-product d-md-flex d-block py-4 mb-5 px-4 mx-md-0 mx-3 px-md-0" data-aos="fade-up" data-aos-duration="1500">
+          <div class="card-product d-md-flex d-block py-4 mb-5 px-4 mx-md-0 mx-3 px-md-0">
           @if($product->status_product == 'Destacado')
               <div class="card-destacados d-md-block d-none"><i class="fas fa-star mr-2"></i>{{$product->status_product}}</div>
           @endif
@@ -382,9 +382,9 @@
                 loop:true,
                 margin:10,
                 responsiveClass:true,
-                autoplay:true,
-                autoplayTimeout:5000,
-                autoplayHoverPause:true,
+                // autoplay:true,
+                // autoplayTimeout:5000,
+                // autoplayHoverPause:true,
                 items:1,
                 nav:false,
                 dots:false
