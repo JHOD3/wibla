@@ -55,34 +55,6 @@
         </ul>
     </li>
 @endcan --}}
-@can('haveaccess', 'users.index')
-    <li class="{{ Request::is('users*') ? 'menu-open' : '' }} nav-item has-treeview">
-        <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-                Usuarios
-                <i class="fas fa-angle-left right"></i>
-            </p>
-        </a>
-        <ul class="nav nav-treeview">
-            @can('haveaccess', 'users.create')
-                <li class="nav-item {{ Request::is('users.create') ? 'active' : '' }}">
-                    <a href="{{ route('users.create') }}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Añadir usuario</p>
-                    </a>
-                </li>
-            @endcan
-            <li class="nav-item {{ Request::is('users.index') ? 'active' : '' }}">
-                <a href="{{ route('users.index') }}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Usuarios</p>
-                </a>
-            </li>
-
-        </ul>
-    </li>
-@endcan
 @can('haveaccess', 'categories.index')
     <li class="{{ Request::is('categories*') ? 'menu-open' : '' }} nav-item has-treeview">
         <a href="#" class="nav-link">
@@ -165,4 +137,32 @@
         </li>
     </ul>
 </li>
+@endcan
+@can('haveaccess', 'users.index')
+    <li class="{{ Request::is('users*') ? 'menu-open' : '' }} nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+                Usuarios
+                <i class="fas fa-angle-left right"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            @can('haveaccess', 'users.create')
+                <li class="nav-item {{ Request::is('users.create') ? 'active' : '' }}">
+                    <a href="{{ route('users.create') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Añadir usuario</p>
+                    </a>
+                </li>
+            @endcan
+            <li class="nav-item {{ Request::is('users.index') ? 'active' : '' }}">
+                <a href="{{ route('users.index') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Usuarios</p>
+                </a>
+            </li>
+
+        </ul>
+    </li>
 @endcan
