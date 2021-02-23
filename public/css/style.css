@@ -528,6 +528,7 @@ ul.content-caja-li li {
     background: transparent;
     border: none;
     color: white;
+    outline: none !important;
 }
 .vision-text {
     margin-left: -18rem;
