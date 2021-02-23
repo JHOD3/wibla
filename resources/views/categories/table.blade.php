@@ -17,9 +17,15 @@
                 <td>
                     {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('categories.show', [$category->id]) }}" class='btn btn-default btn-xs'><i  class="fas fa-eye"></i></a>
-                        <a href="{{ route('categories.edit', [$category->id]) }}" class='btn btn-default btn-xs'><i class="fas fa-edit"></i></a>
-                        {!! Form::button('<i class="fas fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        @can('haveaccess', 'categories.show')
+                            <a href="{{ route('categories.show', [$category->id]) }}" class='btn btn-default btn-xs'><i  class="fas fa-eye"></i></a>
+                        @endcan
+                        @can('haveaccess', 'categories.edit')
+                            <a href="{{ route('categories.edit', [$category->id]) }}" class='btn btn-default btn-xs'><i class="fas fa-edit"></i></a>
+                        @endcan
+                        @can('haveaccess', 'categories.destroy')
+                            {!! Form::button('<i class="fas fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        @endcan
                     </div>
                     {!! Form::close() !!}
                 </td>

@@ -203,7 +203,7 @@
                   <tr>
                     <td align="left" style="font-size:0px;padding:0px 25px 0px 25px;padding-top:0px;padding-right:50px;padding-bottom:0px;padding-left:50px;word-break:break-word;">
                       <div style="font-family:Open Sans, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;text-align:left;color:#797e82;">
-                        <h1 style="text-align:center; color: #505050; line-height:32px">Compra desde la web</h1>
+                        <h1 style="text-align:center; color: #505050; line-height:32px">Mensaje recibido desde la web</h1>
                       </div>
                     </td>
                   </tr>
@@ -263,7 +263,6 @@
                           <td style="padding:4px;">&nbsp;</td>
                         </tr>
                       </table>
-
                     </td>
                   </tr>
                   <tr>

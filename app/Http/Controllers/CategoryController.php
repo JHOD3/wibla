@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Illuminate\Support\Facades\Gate;
 
 class CategoryController extends AppBaseController
 {
@@ -29,6 +30,7 @@ class CategoryController extends AppBaseController
      */
     public function index(Request $request)
     {
+        Gate::authorize('haveaccess', 'categories.index');
         $categories = $this->categoryRepository->all();
 
         return view('categories.index')
@@ -42,6 +44,7 @@ class CategoryController extends AppBaseController
      */
     public function create()
     {
+        Gate::authorize('haveaccess', 'categories.create');
         return view('categories.create');
     }
 
@@ -54,6 +57,7 @@ class CategoryController extends AppBaseController
      */
     public function store(CreateCategoryRequest $request)
     {
+        Gate::authorize('haveaccess', 'categories.create');
         $input = $request->all();
 
         $category = $this->categoryRepository->create($input);
@@ -72,6 +76,7 @@ class CategoryController extends AppBaseController
      */
     public function show($id)
     {
+        Gate::authorize('haveaccess', 'categories.show');
         $category = $this->categoryRepository->find($id);
 
         if (empty($category)) {
@@ -92,6 +97,7 @@ class CategoryController extends AppBaseController
      */
     public function edit($id)
     {
+        Gate::authorize('haveaccess', 'categories.edit');
         $category = $this->categoryRepository->find($id);
 
         if (empty($category)) {
@@ -113,6 +119,7 @@ class CategoryController extends AppBaseController
      */
     public function update($id, UpdateCategoryRequest $request)
     {
+        Gate::authorize('haveaccess', 'categories.edit');
         $category = $this->categoryRepository->find($id);
 
         if (empty($category)) {
@@ -139,6 +146,7 @@ class CategoryController extends AppBaseController
      */
     public function destroy($id)
     {
+        Gate::authorize('haveaccess', 'categories.destroy');
         $category = $this->categoryRepository->find($id);
 
         if (empty($category)) {

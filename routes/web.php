@@ -31,6 +31,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('business','PageController@organismsBusiness')->name('business');
     Route::get('contact/{product?}','PageController@contact')->name('contact');
     Route::post('sendContact','PageController@sendContact')->name('sendContact');
+    Route::post('sendCompra','PageController@sendCompra')->name('sendCompra');
+    Route::post('sendNewlatter','PageController@sendNewlatter')->name('sendNewlatter');
     Route::get('faqs','PageController@faqs')->name('faqs');
     Route::get('aboutUs','PageController@aboutUs')->name('aboutUs');
     Route::get('product_list','PageController@productList')->name('product_list');

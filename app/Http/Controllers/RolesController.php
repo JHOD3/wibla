@@ -32,7 +32,7 @@ class RolesController extends AppBaseController
      */
     public function index(Request $request)
     {
-        // Gate::authorize('haveaccess', 'role.index');
+        Gate::authorize('haveaccess', 'role.index');
         $roles = $this->rolesRepository->all();
 
         return view('roles.index')

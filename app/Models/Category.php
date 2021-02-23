@@ -19,7 +19,7 @@ class Category extends Model
     use SoftDeletes;
 
     public $table = 'categories';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -49,7 +49,9 @@ class Category extends Model
      * @var array
      */
     public static $rules = [
-        
+        'name' => 'required',
+        'slug' => 'required|unique:categories',
+        'Description' => 'required'
     ];
 
     static function listCategories()
@@ -61,5 +63,5 @@ class Category extends Model
         }
         return $array;
     }
-    
+
 }

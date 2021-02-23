@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 use Flash;
 use Response;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends AppBaseController
 {
@@ -33,6 +34,7 @@ class ProductController extends AppBaseController
      */
     public function index(Request $request)
     {
+        Gate::authorize('haveaccess', 'products.index');
         $products = $this->productRepository
                         ->makeModel()::join('marks','products.mark_id','marks.id')
                         ->join('categories','products.category_id','categories.id')
@@ -48,6 +50,7 @@ class ProductController extends AppBaseController
      */
     public function create()
     {
+        Gate::authorize('haveaccess', 'products.create');
         $listCategories = Category::listCategories();
         $listMarks      = Mark::listMarks();
         $listStatus = array(
@@ -68,6 +71,7 @@ class ProductController extends AppBaseController
      */
     public function store(CreateProductRequest $request)
     {
+        Gate::authorize('haveaccess', 'products.create');
         $input = $request->all();
 
         if ($primary_image = $request->file('primary_image')) {
@@ -116,6 +120,7 @@ class ProductController extends AppBaseController
      */
     public function show($id)
     {
+        Gate::authorize('haveaccess', 'products.show');
         $product = $this->productRepository
             ->makeModel()::join('marks','products.mark_id','marks.id')
             ->join('categories','products.category_id','categories.id')
@@ -141,6 +146,7 @@ class ProductController extends AppBaseController
      */
     public function edit($id)
     {
+        Gate::authorize('haveaccess', 'products.edit');
         $product = $this->productRepository->find($id);
         $listCategories = Category::listCategories();
         $listMarks      = Mark::listMarks();
@@ -168,6 +174,7 @@ class ProductController extends AppBaseController
      */
     public function update($id, UpdateProductRequest $request)
     {
+        Gate::authorize('haveaccess', 'products.edit');
         $product = $this->productRepository->find($id);
 
         if (empty($product)) {
@@ -203,7 +210,7 @@ class ProductController extends AppBaseController
             $input['slider_image'] = $slider_image_imagenes_name;
         }
 
-        
+
         $product = $this->productRepository->update($input, $id);
 
         Flash::success('Product updated successfully.');
@@ -222,6 +229,7 @@ class ProductController extends AppBaseController
      */
     public function destroy($id)
     {
+        Gate::authorize('haveaccess', 'products.destroy');
         $product = $this->productRepository->find($id);
 
         if (empty($product)) {

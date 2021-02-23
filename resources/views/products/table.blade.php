@@ -23,9 +23,15 @@
                 <td>
                     {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('products.show', [$product->id]) }}" class='btn btn-default btn-xs'><i class="fas fa-eye"></i></a>
-                        <a href="{{ route('products.edit', [$product->id]) }}" class='btn btn-default btn-xs'><i class="fas fa-edit"></i></a>
-                        {!! Form::button('<i class="fas fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        @can('haveaccess', 'products.show')
+                            <a href="{{ route('products.show', [$product->id]) }}" class='btn btn-default btn-xs'><i class="fas fa-eye"></i></a>
+                        @endcan
+                        @can('haveaccess', 'products.edit')
+                            <a href="{{ route('products.edit', [$product->id]) }}" class='btn btn-default btn-xs'><i class="fas fa-edit"></i></a>
+                        @endcan
+                        @can('haveaccess', 'products.destroy')
+                            {!! Form::button('<i class="fas fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        @endcan
                     </div>
                     {!! Form::close() !!}
                 </td>

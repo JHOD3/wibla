@@ -8,11 +8,13 @@
                     <h1 class="m-0 text-dark">Marcas</h1>
                 </div>
                 <!-- /.col -->
+                @can('haveaccess', 'marks.create')
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <a class="btn btn-primary ml-auto mr-0" href="{{ route('marks.create') }}">Añadir nueva</a>
                     </ol>
                 </div>
+                @endcan
             </div>
         </div>
     </div>
@@ -28,7 +30,7 @@
             </div>
         </div>
         <div class="text-center">
-        
+
         </div>
     </div>
 @endsection

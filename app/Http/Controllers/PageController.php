@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MessageCompra;
 use App\Repositories\ProductRepository;
 use Cassandra\Rows;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Mail\MessageContract;
+use App\Mail\MessageNewlatter;
 use Illuminate\Support\Facades\Mail;
 
 class PageController extends Controller
@@ -56,7 +58,7 @@ class PageController extends Controller
     }
 
     public function contact($product = '')
-    {   
+    {
         return view('web.contact', compact('product'));
     }
 
@@ -101,19 +103,29 @@ class PageController extends Controller
                             $filtros['products'] = $productNames;
                         }
                     }
-                    if(isset($request->precio)){
-                        $precioNames = $request->precio;
-                        if (is_array($precioNames)){
-                            $query->whereOr(function ($query) use ($precioNames){
-                                foreach ($precioNames as $precioSearch){
-                                    $query->whereOr('products.precio','like','%'.$precioSearch.'%');
-                                }
-                            });
-                            $filtros['precio'] = array_unique($precioNames);
-                        }else{
-                            $query->where('products.precio','like','%'.$precioNames.'%');
-                            $filtros['precio'] = $precioNames;
-                        }
+                    // if(isset($request->precio)){
+                    //     $precioNames = $request->precio;
+                    //     if (is_array($precioNames)){
+                    //         $query->whereOr(function ($query) use ($precioNames){
+                    //             foreach ($precioNames as $precioSearch){
+                    //                 $query->whereOr('products.precio','like','%'.$precioSearch.'%');
+                    //             }
+                    //         });
+                    //         $filtros['precio']= array_unique($precioNames);
+                    //     }else{
+                    //         $query->where('products.precio','like','%'.$precioNames.'%');
+                    //         $filtros['precio'] = '$'.$precioNames;
+                    //     }
+                    // }
+                    if(isset($request->preciomin)){
+                        $preciomin = (is_array($request->preciomin))? str_replace('$','',$request->preciomin[array_key_last($request->preciomin)]):str_replace('$','',$request->preciomin);
+                        $query->where('products.precio','>=',$preciomin);
+                        $filtros['preciomin'] = '$'.$preciomin;
+                    }
+                    if(isset($request->preciomax)){
+                        $preciomax = (is_array($request->preciomax))? str_replace('$','',$request->preciomax[array_key_last($request->preciomax)]):str_replace('$','',$request->preciomax);
+                        $query->where('products.precio','<=',$preciomax);
+                        $filtros['preciomax'] = '$'.$preciomax;
                     }
                     if(isset($request->modelo)){
                         $modeloNames = $request->modelo;
@@ -159,7 +171,13 @@ class PageController extends Controller
                     }
             $query->select('products.*','marks.name as marca','categories.name as categoria');
             if($request->order){
-                $query->orderByRaw(DB::raw("FIELD(products.status_product, '".$request->order."' ) DESC"));
+                if(is_array($request->order)){
+                    foreach ($request->order as $key => $order) {
+                        $query->orderByRaw(DB::raw("FIELD(products.status_product, '".$order."' ) DESC"));
+                    }
+                }else{
+                    $query->orderByRaw(DB::raw("FIELD(products.status_product, '".$request->order."' ) DESC"));
+                }
                 $filtros['order'] = $request->order;
             }
             $products = $query->paginate(5);
@@ -175,7 +193,7 @@ class PageController extends Controller
             ->where('products.slug',$slug)
             ->select('products.*','marks.name as marca','categories.name as categoria')
             ->first();
-        
+
         return view('web.product_detail_b',compact('product'));
     }
 
@@ -191,17 +209,41 @@ class PageController extends Controller
     }
 
     public function sendContact(Request $request)
-    {   
+    {
         $request->validate([
             'g-recaptcha-response' => 'required|captcha'
         ]);
 
         $data = $request->all();
-        Mail::to('compraweb@wibla.com.ar')->send(new MessageContract($data));
+        Mail::to('contacto@wibla.com.ar')->send(new MessageContract($data));
         return redirect('thanks');
     }
 
-    public function thanks(Type $var = null)
+    public function sendCompra(Request $request)
+    {
+        $request->validate([
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
+
+        $data = $request->all();
+        Mail::to('compraweb@wibla.com.ar')->send(new MessageCompra($data));
+        return redirect('thanks');
+    }
+
+    public function sendNewlatter(Request $request)
+    {
+
+        try {
+            $data = $request->all();
+            Mail::to('contacto@wibla.com.ar')->send(new MessageNewlatter($data));
+            $response = true;
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+        }
+        return response()->json($response, 200, ['Content-Type'=>'application/json'], JSON_UNESCAPED_UNICODE);
+    }
+
+    public function thanks()
     {
         return view('web.contact_thanks');
     }

@@ -33,7 +33,7 @@ class Product extends Model
     use SoftDeletes;
 
     public $table = 'products';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -90,7 +90,9 @@ class Product extends Model
         'category_id' => 'required',
         'mark_id' => 'required',
         'precio' => 'required',
-        'property' => 'required'
+        'property' => 'required',
+        'modelo' => 'required',
+        'slug' => 'required|unique:products'
     ];
 
     /**

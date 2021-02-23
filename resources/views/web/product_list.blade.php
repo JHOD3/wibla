@@ -9,8 +9,8 @@
     <div class="container position-absolute-md absulute-center py-section-home d-md-flex d-block pt-5 px-md-5 position-absolute center-image-absolute" style="z-index: 99;">
       <div class="col-md-5 col-12 mt-container-home mt-4">
         <div>
-          <p class="font12-px mb-1 mb-md-2"> <a class="text-white" href="#">Categorías  /   </a><a class="text-white" href="#">Cámaras digitales   /   </a><a class="text-white" href="#">Cámaras mirrorless</a></p>
-          <h1 class="montserrat text-md-left text-white font43-px">Cámaras mirrorless</h1>
+          {{-- <p class="font12-px mb-1 mb-md-2"> <a class="text-white" href="#">Categorías  /   </a><a class="text-white" href="#">Cámaras digitales   /   </a><a class="text-white" href="#">Cámaras mirrorless</a></p> --}}
+          <h1 class="montserrat text-md-left text-white font43-px mt-md-4">{{ucwords(strtolower($filtros['category'] ?? 'Tienda'))}}</h1>
         </div>
       </div>
       <div class="col-md-7 col-12 mt-container-home d-none d-md-block"></div>
@@ -34,12 +34,12 @@
       <div class="col-md-12 d-md-block d-none">
         <select class="mdb-select md-form col-2 ml-md-auto px-0" id="dynamic_select">
           <option value="" disabled="" selected="">Ordenar por</option>
-          <option value="{{route('product_list', array_merge_recursive($filtros,['order'=>'Descatados']))}}">Descatados</option>
+          <option value="{{route('product_list', array_merge_recursive($filtros,['order'=>'Destacado']))}}">Destacados</option>
           <option value="{{route('product_list', array_merge_recursive($filtros,['order'=>'Oferta']))}}">En Oferta</option>
-          <option value="{{route('product_list', array_merge_recursive($filtros,['order'=>'Nuevos']))}}">Nuevos</option>
+          <option value="{{route('product_list', array_merge_recursive($filtros,['order'=>'Nuevo']))}}">Nuevos</option>
         </select>
       </div>
-      <div class="col-md-3 filtros d-md-block d-none">
+      <div class="col-md-3 filtros d-md-block d-none pb-md-5">
         <div class="accordion md-accordion accordion-3" id="accordionEx194" role="tablist" aria-multiselectable="true">
             <div class="card">
                 <div class="card-header border-bottom" id="heading4" role="tab">
@@ -85,15 +85,12 @@
           <div class="card">
             <div class="card-header border-bottom" id="heading4" role="tab"><a data-toggle="collapse" data-parent="#accordionEx194" href="#collapse4" aria-expanded="true" aria-controls="collapse4">
                 <p class="mb-0 mt-3 text-muted">Marca<i class="fas fa-angle-down rotate-icon"></i></p></a></div>
-            <div class="collapse show" id="collapse4" role="tabpanel" aria-labelledby="heading4" data-parent="#accordionEx194">
+            <div class="collapse" id="collapse4" role="tabpanel" aria-labelledby="heading4" data-parent="#accordionEx194">
               <div class="card-body pt-0">
                 <ul class="mt-md-3">
                     @foreach($marks as $mark)
                         <li><a href="{{route('product_list', array_merge_recursive($filtros,['mark'=>$mark->name]))}}">{{$mark->name}} ({{$mark->catinda_by_marks}})</a></li>
                     @endforeach
-                   {{-- @php
-                        dd(URL::full())
-                    @endphp--}}
                 </ul>
               </div>
             </div>
@@ -123,13 +120,13 @@
                   <input class="multi-range col-12" id="multiRange" type="range"/>
                 </form>
                   <div class="d-md-flex container">
-                      <a href="{{route('product_list', array_merge_recursive($filtros,['precio'=>'']))}}" class="btn btn-primary col-md-6 rangoPrecio rangoPrecioMin" id="rangeMin">$0</a>
-                      <a href="{{route('product_list', array_merge_recursive($filtros,['precio'=>'']))}}" class="btn btn-secondary col-md-6 rangoPrecio rangoPrecioMax" id="rangeMax">$0</a>
+                      <a href="{{route('product_list', array_merge_recursive($filtros,['preciomin'=>'']))}}" class="btn btn-primary col-md-6 rangoPrecio rangoPrecioMin" id="rangominimo">$0</a>
+                      <a href="{{route('product_list', array_merge_recursive($filtros,['preciomax'=>'']))}}" class="btn btn-secondary col-md-6 rangoPrecio rangoPrecioMax" id="rangomaximo">$0</a>
                   </div>
               </div>
             </div>
           </div>
-          <div class="card">
+          {{-- <div class="card">
             <div class="card-header border-bottom" id="heading6" role="tab"><a class="collapsed" data-toggle="collapse" data-parent="#accordionEx194" href="#collapse7" aria-expanded="false" aria-controls="collapse7">
                 <p class="mb-0 mt-3 text-muted">Resolución <i class="fas fa-angle-down rotate-icon"></i></p></a></div>
             <div class="collapse" id="collapse7" role="tabpanel" aria-labelledby="heading6" data-parent="#accordionEx194">
@@ -152,7 +149,7 @@
                 <div class="container mt-3"><span class="rateMe1" id="rateMe1"></span></div>
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
       </div>
       <div class="col-md-9 mx-auto d-block">
@@ -207,17 +204,148 @@
   </section>
   @include('web.layouts.footer_include_section')
 @endsection
+@section('filter')
+<div class="side-nav fixed bg-white" id="slide-out-filter">
+    <ul class="custom-scrollbar">
+        <li class="d-flex container pb-4">   <a class="pl-0 pl-3 pt-2" href="/"><img src="image/logo_wibla_header.svg" alt=""/></a><a class="closed button-collapse ml-auto p-3 pt-0" href=""><img src="image/icono-x.svg" alt="" srcset="" style="width: 30px;"/></a></li>
+    </ul>
+    <div class="accordion md-accordion accordion-3" id="accordionEx194" role="tablist" aria-multiselectable="true">
+        <div class="card">
+            <div class="card-header border-0" id="heading4" role="tab">
+                <p class="mb-0 mt-3 text-muted">Filtros</p>
+                <div id="apply-filter">
+                        @foreach($filtros as $key1 => $filter)
+                            @if(is_array($filter))
+                                @foreach($filter as $key => $filterItem)
+                                    <span class="apply-filter" style="display: inline-flex !important;" >
+                                        <span>{{$filterItem}}</span>
+                                        @php
+                                            $valor = $filtros[$key1][$key];
+                                             unset($filtros[$key1][$key]);
+
+                                        @endphp
+                                        <a href="{{route('product_list', $filtros )}}" class="delete-filter" style="height: 0px !important;line-height: inherit !important;">
+                                            <i class="fa fa-times font10-px text-dark" aria-hidden="true"></i>
+                                        </a>
+                                        @php
+                                            $filtros[$key1][$key] =$valor;
+                                        @endphp
+                                    </span>
+                                @endforeach
+                            @else
+                                <span class="apply-filter d-flex" style="display: inline-flex !important;">
+                                    <span>{{$filter}}</span>
+                                    @php
+                                         $valor = $filtros[$key1];
+                                         unset($filtros[$key1]);
+                                    @endphp
+                                    <a href="{{route('product_list', $filtros )}}" class="delete-filter" style="height: 0px !important;line-height: inherit !important;">
+                                        <i class="fa fa-times font10-px text-dark" aria-hidden="true"></i>
+                                    </a>
+                                    @php
+                                        $filtros[$key1] = $valor;
+                                    @endphp
+                                </span>
+                            @endif
+                        @endforeach
+                    </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header border-bottom py-2" id="heading4" role="tab"><a data-toggle="collapse" data-parent="#accordionEx194" href="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                    <p class="mb-0 mt-0 text-muted">Marca<i class="fas fa-angle-down rotate-icon mt-3"></i></p></a></div>
+            <div class="collapse show" id="collapse4" role="tabpanel" aria-labelledby="heading4" data-parent="#accordionEx194">
+                <div class="card-body pt-0">
+                    <ul class="mt-md-3">
+                        @foreach($marks as $mark)
+                            <li><a href="{{route('product_list', array_merge_recursive($filtros,['mark'=>$mark->name]))}}">{{$mark->name}} ({{$mark->catinda_by_marks}})</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header border-bottom py-2" id="heading5" role="tab"><a class="collapsed" data-toggle="collapse" data-parent="#accordionEx194" href="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                    <p class="mb-0 mt-0 text-muted">Modelo<i class="fas fa-angle-down rotate-icon mt-3"></i></p></a></div>
+            <div class="collapse" id="collapse5" role="tabpanel" aria-labelledby="heading5" data-parent="#accordionEx194">
+                <div class="card-body pt-0">
+                    <p>
+                    <ul class="mt-md-3">
+                        @foreach($models as $model)
+                            <li><a href="{{route('product_list', array_merge_recursive($filtros,['modelo'=>$model['modelo']]))}}">{{$model['modelo']}} ({{$model['catinda_by_models']}})</a></li>
+                        @endforeach
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header border-bottom py-2" id="heading6" role="tab"><a class="collapsed" data-toggle="collapse" data-parent="#accordionEx194" href="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                    <p class="mb-0 mt-0 text-muted">Rengo de precio <i class="fas fa-angle-down rotate-icon mt-3"></i></p></a></div>
+            <div class="collapse" id="collapse6" role="tabpanel" aria-labelledby="heading6" data-parent="#accordionEx194">
+                <div class="card-body pt-0">
+                    <form class="multi-range-field my-5 pb-5">
+                        <input class="multi-range col-12" id="multi6" type="range"/>
+                    </form>
+                    <div class="d-md-flex container">
+                        <a href="{{route('product_list', array_merge_recursive($filtros,['precio'=>'']))}}" class="btn btn-primary col-md-6 rangoPrecio rangoPrecioMin" id="rangeMin">$0</a>
+                        <a href="{{route('product_list', array_merge_recursive($filtros,['precio'=>'']))}}" class="btn btn-secondary col-md-6 rangoPrecio rangoPrecioMax" id="rangeMax">$0</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- <div class="card">
+            <div class="card-header border-bottom py-2" id="heading6" role="tab"><a class="collapsed" data-toggle="collapse" data-parent="#accordionEx194" href="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                    <p class="mb-0 mt-0 text-muted">Resolución <i class="fas fa-angle-down rotate-icon mt-3"></i></p></a></div>
+            <div class="collapse" id="collapse7" role="tabpanel" aria-labelledby="heading6" data-parent="#accordionEx194">
+                <div class="card-body pt-0">
+                    <p>
+                    <ul class="mt-md-3">
+                        <li><a href="#">1600x1200 (16)</a></li>
+                        <li><a href="#">1600x1200 (4)</a></li>
+                        <li><a href="#">1600x1200 (8)</a></li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header border-bottom py-2" id="heading6" role="tab"><a class="collapsed" data-toggle="collapse" data-parent="#accordionEx194" href="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                    <p class="mb-0 mt-0 text-muted">Calificación <i class="fas fa-angle-down rotate-icon mt-3"></i></p></a></div>
+            <div class="collapse" id="collapse8" role="tabpanel" aria-labelledby="heading6" data-parent="#accordionEx194">
+                <div class="card-body pt-0">
+                    <div class="container mt-3"><span class="rateMe1" id="rateMe2"></span></div>
+                </div>
+            </div>
+        </div> --}}
+    </div>
+    <div class="sidenav-bg mask-strong"></div>
+</div>
+<div class="side-nav fixed bg-white" id="slide-out-order">
+    <ul class="custom-scrollbar">
+        <li class="d-flex container pb-4">   <a class="pl-0 pl-3 pt-2" href="/"><img src="image/logo_wibla_header.svg" alt=""/></a><a class="closed button-collapse ml-auto p-3 pt-0" href=""><img src="image/icono-x.svg" alt="" srcset="" style="width: 30px;"/></a></li>
+        <li>
+            <ul class="collapsible collapsible-accordion col-8 mx-auto mt-5">
+                <li> <a class="collapsible-header waves-effect" href="{{route('product_list', array_merge_recursive($filtros,['order'=>'Destacado']))}}"><i class="fas fa-chevron-right"></i>Descatados</a></li>
+                <li> <a class="collapsible-header waves-effect" href="{{route('product_list', array_merge_recursive($filtros,['order'=>'Oferta']))}}"><i class="fas fa-chevron-right"> </i>En Oferta</a></li>
+                <li> <a class="collapsible-header waves-effect" href="{{route('product_list', array_merge_recursive($filtros,['order'=>'Nuevo']))}}"> <i class="fas fa-chevron-right"></i>Nuevos </a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+@endsection
 @section('script')
     <script src="{{asset('js/multi-range.js')}}"></script>
     <script src="{{asset('js/rating.js')}}"></script>
     <script>
         $('.multi-range-field > input').on('change',function (){
-            if($(this).attr('step') == 1){
-                $('#rangeMin').text('$'+$(this).val());
-                $('#rangeMin').attr('href',$('#rangeMin').attr('href')+$(this).val());
+            if($(this).attr('step') == '1'){
+                console.log($(this).val());
+                $('#rangominimo').html('$'+$(this).val());
+                $('#rangominimo').attr('href',$('#rangominimo').attr('href')+$(this).val());
             }else{
-                $('#rangeMax').text('$'+$(this).val());
-                $('#rangeMax').attr('href',$('#rangeMax').attr('href')+$(this).val());
+                $('#rangomaximo').text('$'+$(this).val());
+                $('#rangomaximo').attr('href',$('#rangomaximo').attr('href')+$(this).val());
             }
         });
         $('#dynamic_select').on('change', function () {

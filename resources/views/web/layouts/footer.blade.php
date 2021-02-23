@@ -19,9 +19,9 @@
                 <p class="text-white mb-2">Productos</p>
                 <div class="raya col-md-2 col-3 py-1-raya bg-white"></div>
                 <ul class="footer-list mt-md-4 mt-4">
-                    <li><a href="#camaras"><i class="fas fa-chevron-right font10-px mr-md-2"> </i><span>Cámara</span></a></li>
-                    <li><a href="#lentes"> <i class="fas fa-chevron-right font10-px mr-md-2"> </i><span>Lentes</span></a></li>
-                    <li><a href="#proyectores"> <i class="fas fa-chevron-right font10-px mr-md-2"> </i><span>Proyectos</span></a></li>
+                    <li><a href="{{route('product_list', ['category'=>'camaras'])}}"><i class="fas fa-chevron-right font10-px mr-md-2"> </i><span>Cámara</span></a></li>
+                    <li><a href="{{route('product_list' , ['category'=>'lentes'])}}"> <i class="fas fa-chevron-right font10-px mr-md-2"> </i><span>Lentes</span></a></li>
+                    <li><a href="{{route('product_list', ['category'=>'proyectores'])}}"> <i class="fas fa-chevron-right font10-px mr-md-2"> </i><span>Proyectores</span></a></li>
                 </ul>
             </div>
             <div class="col-md-4 col-6">
@@ -34,7 +34,7 @@
                 </ul>
             </div>
             <div class="col-md-4 d-md-block d-none">
-                <p class="text-white">Siguenos</p>
+                <p class="text-white">Seguinos</p>
                 <div class="raya col-md-2 col-1 py-1-raya bg-white"></div>
                 <div class="mt-md-4">
                     <a class="link-footer">
@@ -52,11 +52,16 @@
         <div class="col-md-3 pt-md-5 pt-4">
             <p class="text-white mb-2">Newsletter
             <div class="raya col-md-2 col-1 py-1-raya bg-white"></div>
-            <div class="mt-md-4">
-                <div class="md-form md-outline footer-input-pl mt-4">
-                    <input class="form-control text-white" id="form1" type="text"/>
-                    <label for="form1">Example label</label>
-                </div>
+            <div class="mt-md-4" id="thanks">
+                <form id="form_newlatter">
+                    <div class="md-form md-outline footer-input-pl mt-4">
+                        <input class="form-control text-white" id="email" name="email" type="text" autocomplete="off"/>
+                        <label for="form1">Tu correo</label>
+                        <button class="btn-newlatter" type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
             </p>
         </div>
@@ -115,6 +120,10 @@
             buscar(inputSearch);
         }
     });
+    $('#search').blur(function (e) {
+        let desplegable = $('#search-desplegable');
+        desplegable.removeClass('d-block').addClass('d-none');
+    });
     function buscar(inputSearch){
         let desplegable = $('#search-desplegable');
         $.ajax({
@@ -124,22 +133,29 @@
             headers:{ 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: { search:inputSearch}
         }).done(function (products){
-            if (products != '' && inputSearch.length >= 2 ) {
-                let  html = '';
+            let  html = '';
+            if (products != '') {
+
                 desplegable.removeClass('d-none').addClass('d-block');
                 products.forEach(function (product, index) {
                     html += '<a class="link-search" onclick="alert(olha)" href="{{url('product_list')}}?product='+product.name+'">' +
-                        '<div class="px-md-3 py-md-2" style="line-height: 12px;">' +
-                        '<div><small>' + product.categoria + '</small></div>' +
-                        '<span>' + product.name + '</span>' +
-                        '</div>' +
-                        '</a>';
+                                '<div class="px-md-3 py-md-2" style="line-height: 12px;">' +
+                                    '<div><small>' + product.categoria + '</small></div>' +
+                                    '<span>' + product.name + '</span>' +
+                                '</div>' +
+                            '</a>';
 
                 });
-                desplegable.html(html);
             }else{
-                desplegable.removeClass('d-block').addClass('d-none');
+                desplegable.removeClass('d-none').addClass('d-block');
+                html += '<div class="link-search">' +
+                            '<div class="px-md-3 py-md-2" style="line-height: 12px;">' +
+                                '<div><small> No hay resultados </small></div>' +
+                                '<span></span>' +
+                            '</div>' +
+                        '</div>';
             }
+            desplegable.html(html);
         });
     }
     $(document).ready(function(){
@@ -171,4 +187,22 @@
             $( "#search" ).focus();
         });
     });
+
+    $('#form_newlatter').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url:"{{route('sendNewlatter')}}",
+            type:'post',
+            typeData:'json',
+            headers:{ 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: { email:$('#email').val()}
+        }).done(function (response){
+            if(response == true){
+                $('#thanks').html('<span class="text-white">Gracias por unirse a nuestra lista.</span>');
+            }else{
+                $('#thanks').html('<span class="text-white">No se pudo enviar el email.</span>');
+            }
+        });
+    });
+
 </script>

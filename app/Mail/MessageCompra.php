@@ -6,11 +6,11 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class MessageContract extends Mailable
+class MessageCompra extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject = "Contacto desde la web";
+    public $subject = "Compra desde la web";
     public $msg;
 
     /**
@@ -30,6 +30,6 @@ class MessageContract extends Mailable
      */
     public function build()
     {
-        return $this->view('email.contactweb');
+        return $this->view('email.compraweb');
     }
 }

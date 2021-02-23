@@ -27,7 +27,7 @@
     </li>
 @endcan
 
-@can('haveaccess', 'permissions.index')
+{{-- @can('haveaccess', 'permissions.index')
     <li class="{{ Request::is('permissions*') ? 'menu-open' : '' }} nav-item has-treeview">
         <a href="#" class="nav-link">
             <i class="nav-icon fas fa-universal-access"></i>
@@ -54,7 +54,7 @@
 
         </ul>
     </li>
-@endcan
+@endcan --}}
 @can('haveaccess', 'users.index')
     <li class="{{ Request::is('users*') ? 'menu-open' : '' }} nav-item has-treeview">
         <a href="#" class="nav-link">

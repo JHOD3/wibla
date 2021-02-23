@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Illuminate\Support\Facades\Gate;
 
 class MarkController extends AppBaseController
 {
@@ -29,6 +30,7 @@ class MarkController extends AppBaseController
      */
     public function index(Request $request)
     {
+        Gate::authorize('haveaccess', 'marks.index');
         $marks = $this->markRepository->all();
 
         return view('marks.index')
@@ -42,6 +44,7 @@ class MarkController extends AppBaseController
      */
     public function create()
     {
+        Gate::authorize('haveaccess', 'marks.create');
         return view('marks.create');
     }
 
@@ -54,8 +57,8 @@ class MarkController extends AppBaseController
      */
     public function store(CreateMarkRequest $request)
     {
+        Gate::authorize('haveaccess', 'marks.store');
         $input = $request->all();
-
         $mark = $this->markRepository->create($input);
 
         Flash::success('Mark saved successfully.');
@@ -72,6 +75,8 @@ class MarkController extends AppBaseController
      */
     public function show($id)
     {
+        Gate::authorize('haveaccess', 'marks.show');
+
         $mark = $this->markRepository->find($id);
 
         if (empty($mark)) {
@@ -92,6 +97,7 @@ class MarkController extends AppBaseController
      */
     public function edit($id)
     {
+        Gate::authorize('haveaccess', 'marks.edit');
         $mark = $this->markRepository->find($id);
 
         if (empty($mark)) {
@@ -113,6 +119,7 @@ class MarkController extends AppBaseController
      */
     public function update($id, UpdateMarkRequest $request)
     {
+        Gate::authorize('haveaccess', 'marks.edit');
         $mark = $this->markRepository->find($id);
 
         if (empty($mark)) {
@@ -139,6 +146,7 @@ class MarkController extends AppBaseController
      */
     public function destroy($id)
     {
+        Gate::authorize('haveaccess', 'marks.destroy');
         $mark = $this->markRepository->find($id);
 
         if (empty($mark)) {

@@ -5,7 +5,7 @@
       <div class="col-md-5 col-12 mt-container-home mt-4">
         <div>
           <h1 class="montserrat text-md-left text-dark font43-px text-center"> Preguntas frecuentes</h1>
-          <p class="mt-md-4 text-md-left font16-px text-dark text-center">Si no encontrás tu consulta acá, podés <br> escribirnos a  <a class="text-primary" href="mailto:ayuda@wibla.com">ayuda@wibla.com</a>con tu <br> pregunta, estamos para ayudarte.</p>
+          <p class="mt-md-4 text-md-left font16-px text-dark text-center">Si no encontrás tu consulta acá, podés <br> escribirnos a  <a class="text-primary" href="mailto:ayuda@wibla.com">ayuda@wibla.com</a> con tu <br> pregunta, estamos para ayudarte.</p>
         </div>
       </div>
       <div class="col-md-7 col-12 mt-container-home d-none d-md-block"></div>
@@ -72,4 +72,19 @@
     </div>
   </section>
   @include('web.layouts.footer_include_section')
+@endsection
+@section('script')
+<script>
+    $('.owl-home').owlCarousel({
+        loop:true,
+        margin:10,
+        responsiveClass:true,
+        autoplay:true,
+        autoplayTimeout:5000,
+        autoplayHoverPause:true,
+        items:1,
+        nav:false,
+        dots:false
+    });
+</script>
 @endsection

@@ -8,11 +8,13 @@
                     <h1 class="m-0 text-dark">Categorias</h1>
                 </div>
                 <!-- /.col -->
+                @can('haveaccess', 'categories.create')
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <a class="btn btn-primary ml-auto mr-0" href="{{ route('categories.create') }}">Añadir nueva</a>
                     </ol>
                 </div>
+                @endcan
                 <!-- /.col -->
             </div>
             <!-- /.row -->
@@ -32,7 +34,7 @@
             </div>
         </div>
         <div class="text-center">
-        
+
         </div>
     </div>
 @endsection

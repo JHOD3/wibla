@@ -19,7 +19,7 @@ class Mark extends Model
     use SoftDeletes;
 
     public $table = 'marks';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -49,7 +49,9 @@ class Mark extends Model
      * @var array
      */
     public static $rules = [
-        
+        'name' => 'required',
+        'slug' => 'required|unique:marks',
+        'Description' => 'required'
     ];
 
     static function listMarks()
@@ -62,5 +64,5 @@ class Mark extends Model
         return $array;
     }
 
-    
+
 }

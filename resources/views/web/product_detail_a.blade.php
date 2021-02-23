@@ -43,9 +43,9 @@
                 <div class="px-5 px-md-0">
                     <div><small class="font16-px">Modelo</small>
                         <h2 class="font43-px-d">{{$product->modelo}}</h2>
-                        <div class="d-flex align-items-center"><span class="rateMe2" id="rateMe3"> </span>
+                        {{-- <div class="d-flex align-items-center"><span class="rateMe2" id="rateMe3"> </span>
                             <p class="ml-md-3 mb-0">6 comentarios </p>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="mt-md-4"><small class="font16-px">Precio</small>
                         <h2 class="font43-px-d">{{$product->precio}}</h2>
