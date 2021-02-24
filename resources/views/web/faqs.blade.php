@@ -12,13 +12,13 @@
     </div>
     <div class="owl-carousel owl-home d-none d-md-block">
       <embed class="mx-auto d-block" src="image/fondo_header_faqs.png" style="width:100%"/>
-      <embed class="mx-auto d-block" src="image/fondo_header_faqs.png" style="width:100%"/>
-      <embed class="mx-auto d-block" src="image/fondo_header_faqs.png" style="width:100%"/>
+      {{-- <embed class="mx-auto d-block" src="image/fondo_header_faqs.png" style="width:100%"/>
+      <embed class="mx-auto d-block" src="image/fondo_header_faqs.png" style="width:100%"/> --}}
     </div>
     <div class="owl-carousel owl-home d-block d-md-none">
       <embed class="mx-auto d-block" src="image/fondo_header_faqs-m.png" style="width:100%"/>
-      <embed class="mx-auto d-block" src="image/fondo_header_faqs-m.png" style="width:100%"/>
-      <embed class="mx-auto d-block" src="image/fondo_header_faqs-m.png" style="width:100%"/>
+      {{-- <embed class="mx-auto d-block" src="image/fondo_header_faqs-m.png" style="width:100%"/>
+      <embed class="mx-auto d-block" src="image/fondo_header_faqs-m.png" style="width:100%"/> --}}
     </div>
   </section>
   <section class="pt-md-5 py-5 pb-md-0">
@@ -26,7 +26,7 @@
     <div class="accordion md-accordion accordion-3 col-md-7 mx-auto py-md-5" id="accordionEx194" role="tablist" aria-multiselectable="true">
       <div class="card border-0">
         <div class="card-header" id="heading4" role="tab"><a data-toggle="collapse" data-parent="#accordionEx194" href="#collapse4" aria-expanded="true" aria-controls="collapse4">
-            <p class="mb-0 mt-3 text-muted font18-px"><i class="fal fa-plus-circle rotate-icon-plus font30-px float-left mr-3"></i>¿Cómo realizó una compra en Wibla.com.ar ?</p></a></div>
+            <p class="mb-0 mt-3 text-muted font18-px"><i class="fal fa-plus-circle rotate-icon-plus font30-px float-left mr-3"></i>¿Cómo realizo una compra en Wibla.com.ar ?</p></a></div>
         <div class="collapse show" id="collapse4" role="tabpanel" aria-labelledby="heading4" data-parent="#accordionEx194">
           <div class="card-body pt-0 pl-md-5">
             <p>Es fácil y rápido. Seleccionás el producto que te interesa y completando un simple formulario nos ponemos en contacto finalizar la compra de forma telefónica.</p>
@@ -109,12 +109,12 @@
 @section('script')
 <script>
     $('.owl-home').owlCarousel({
-        loop:true,
+        // loop:true,
         margin:10,
-        responsiveClass:true,
-        autoplay:true,
-        autoplayTimeout:5000,
-        autoplayHoverPause:true,
+        // responsiveClass:true,
+        // autoplay:true,
+        // autoplayTimeout:5000,
+        // autoplayHoverPause:true,
         items:1,
         nav:false,
         dots:false
